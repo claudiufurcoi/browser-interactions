@@ -1,0 +1,67 @@
+<div>
+	<form>
+		<div class="col-12">
+			<button class="btn btn-primary" style="margin-left: 20px; margin-right: 20px;margin:25px" (click)="saveAs()">Save</button>
+			<button class="btn btn-primary" style="margin:25px" (click)="statistics()" [routerLinkActive]="['router-link-active']">Stats</button>
+		</div>
+	</form>
+	<table mat-table matSort [dataSource]="matDataSource" (matSortChange)="sortData($event)" matSortActive="event" matSortDirection="asc" matSortDisableClear>
+
+		<ng-container [matColumnDef]="col" *ngFor="let col of displayedColumns">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header>
+				<span *ngIf="showLabel(col)">{{col}}</span>
+			</th>
+			<td mat-cell *matCellDef="let element; let i = index" class="table-cell">
+				<div *ngIf="!element.isEdit">
+					<div class="btn-edit" *ngIf="col === 'edit'; spanHeader">
+						<button class="btn btn-link btn" (click)="onClick(element)">Edit</button>
+					</div>
+					<div class="btn-edit" *ngIf="col === 'delete'">
+						<button class="btn btn-link btn" (click)="delete(i)">Delete</button>
+					</div>
+
+					<span #spanHeader>
+						<div [ngSwitch]="col">
+							<div *ngSwitchCase="'event'">
+								{{element['event']['type']}}
+							</div>
+							<div *ngSwitchCase="'setup'">
+								{{element['setup']['html']}}
+							</div>
+							<div *ngSwitchCase="'time'">
+								{{element['time'] | date:'dd.MM.yyyy HH:mm:ss'}}
+							</div>
+						</div>
+					</span>
+				</div>
+				<div [ngSwitch]="col" *ngIf="element.isEdit">
+					<div *ngSwitchCase="'edit'">
+						<button class="btn btn-link btn" (click)="onClick(element)">Done</button>
+					</div>
+					<div class="btn-edit" *ngSwitchCase="'delete'">
+						<button class="btn btn-link btn" (click)="ondelete(i)">Delete</button>
+					</div>
+
+					<mat-form-field *ngSwitchCase="'event'">						
+						<input [type]="dataSchema[col]" matInput [(ngModel)]="element['event']['type']">
+					</mat-form-field>
+					<mat-form-field *ngSwitchCase="'setup'" class="input-cell">
+						<input [type]="dataSchema[col]" matInput [(ngModel)]="element['setup']['html']">						
+					</mat-form-field>
+					<div *ngSwitchCase="'time'" class="table-cell-text">
+						{{element['time'] | date: 'dd.MM.yyyy HH:mm:ss'}}
+					</div>
+				</div>
+			</td>
+		</ng-container>
+
+		<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+		<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+	</table>
+
+	<mat-paginator
+		[length]="length"
+		[pageSize]="pageSize"
+		showFirstLastButtons class="col-12">
+	</mat-paginator>
+</div>

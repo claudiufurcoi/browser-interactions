@@ -1,0 +1,23 @@
+table {
+	width: 90%;
+	margin: auto;
+}
+.btn-edit {
+	text-align: right;
+}
+h2 {
+	text-align: center;
+	padding-top: 20px;
+}
+
+.layout { display: flex; }
+
+.navigator {
+	width: 300px;
+	overflow: auto;
+	flex-grow: 0;
+	flex-shrink: 0;
+	border-right: 1px solid #EEEEEE;
+}
+
+.navigator ul { list-style: none; }

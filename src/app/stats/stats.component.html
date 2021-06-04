@@ -1,0 +1,35 @@
+<form>
+    <div class="col-12">
+        <button class="btn btn-primary" style="margin-left: 20px; margin-right: 20px;margin:25px" (click)="back()">Back</button>
+    </div>
+</form>
+<table mat-table [dataSource]="timesetinteractions">
+	<ng-container matColumnDef="statistics">
+		<th mat-header-cell *matHeaderCellDef>
+			<span>Statistics Type</span>
+		</th>
+		<td mat-cell *matCellDef="let element" class="table-cell">
+			<div>
+				<span #spanHeader>
+					{{element['key']}}
+				</span>
+			</div>
+		</td>
+	</ng-container>
+	<ng-container matColumnDef="values">
+		<th mat-header-cell *matHeaderCellDef>
+			<span>Value</span>
+		</th>
+		<td mat-cell *matCellDef="let element" class="table-cell">
+			<div>
+				<span #spanHeader>
+					{{ element['value'] }}
+				</span>
+			</div>
+		</td>
+	</ng-container>
+	<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+	<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<figure id="bar"></figure>
+<figure id="seq"></figure>

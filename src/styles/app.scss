@@ -1,0 +1,94 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "bootstrap/bootstrap";
+@import "spinner";
+@import "utils";
+@import "rtl";
+@import "responsive";
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@media print {
+    .breadcrumb {
+        display: none !important;
+    }
+}
+.resize{
+    text-align: center;
+    margin-top: 10px;
+    max-width: 120px;
+    margin-left: 10px;
+}
+.max-w{
+    width: 55px;
+}
+.table-cell {
+    text-align: center;
+    a {
+        margin-top: 5px;
+    }
+}
+
+.table-header {
+    text-align: center;
+}
+
+.table-cell-text {
+    vertical-align: middle !important;
+    text-align: left;
+
+}
+
+.header-width {
+    width: 5%;
+}
+
+.info {
+    color: $info;
+}
+
+.primary {
+    color: $primary
+}
+
+.success {
+    color: $success !important;
+}
+
+.danger {
+    color: $danger;
+}
+
+.warning {
+    color: $warning;
+}
+
+// .table-cell-input {
+//     width: 80%;
+//     margin-left: 10%;
+//     padding: 12px 0;
+// }
+.table-cell-select {
+    min-width: 200px;
+    margin-top: 10px;
+}
+
+.input-cell {
+    width: 80%;
+    margin-left: 10%;
+}
+
+.close {
+    margin-top: -15px;
+    font-size: 25px;
+}
+
+.table-input-container {
+    max-width: 150px;
+}
+
+.table-header {
+    width: 100px;
+}
+
+.removed-row {
+    background-color: rgba(200, 35, 51, 0.5);
+}
