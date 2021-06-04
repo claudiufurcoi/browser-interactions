@@ -1,4 +1,4 @@
-# AvastAssesment
+# Assesment
 
 This project was generated with Angular CLI, integrated with Electron to provide a a desktop application.
 
